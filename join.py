@@ -23,7 +23,6 @@ mr = MapReduce.MapReduce()
 def mapper(record):
     # key : key Id of contents
     key = record[1]
-    #print key ,record
     mr.emit_intermediate(key,record)
 
 
@@ -33,7 +32,6 @@ def reducer(key, list_of_values):
     # value: list of tuples having same Id
     for i in list_of_values:
         if i[0].lower() == 'order':
-            #print i[0]
             for j in list_of_values:
                 if j[0].lower() == 'line_item':
                     join = i + j
